@@ -4,7 +4,7 @@ import {StyledTetrisWrapper, StyledTetris} from './styles/StyledTetris';
 //custom hooks
 import { usePlayer } from "../hooks/usePlayer";
 import { useStage } from "../hooks/useStage";
-
+import { createStage } from "../gameHelpers";
 
 // Components
 import Stage from './Stage';
@@ -20,11 +20,39 @@ const Tetris = () => {
   const [player] = usePlayer();
   const [stage, setStage] = useStage(player);
 
-
   console.log('re-render')
+
+  const movePlayer = dir => {
+
+  }
+
+  const startGame = () => {
+
+  }
+
+  const drop = () => {
+
+  }
+
+  const dropPlayer = () => {
+
+  }
+
+  const move = ({ keycode }) => {
+    if (!gameOVer) {
+      
+    }else if (keyCode === 38) {
+      movePlayer(-1);
+    }else if (keyCode === 39) {
+      movePlayer(1);
+    }else if(keyCode === 40) {
+      dropPlayer();
+    }
+  }
+
   // if the game is over will display
   return (
-    <StyledTetrisWrapper>
+    <StyledTetrisWrapper role ="button" tabIndex="0" onKeyDown="{e => move(e)}">
     <StyledTetris>
       <Stage stage={stage} />
       <aside>
