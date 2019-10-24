@@ -23,32 +23,37 @@ const Tetris = () => {
   console.log('re-render')
 
   const movePlayer = dir => {
-
+    //moving left & right
+    updatePlayerPos({ x: dir, y: 0 });
   }
 
   const startGame = () => {
-
+    //resets everything
+    setStage(createStage());
+    resetPlayer();
   }
 
   const drop = () => {
-
+    updatePlayerPos({ x:0, y:1, collided: false })
   }
 
   const dropPlayer = () => {
-
+    drop();
   }
 
-  const move = ({ keycode }) => {
-    if (!gameOVer) {
-      
-    }else if (keyCode === 38) {
-      movePlayer(-1);
-    }else if (keyCode === 39) {
-      movePlayer(1);
-    }else if(keyCode === 40) {
-      dropPlayer();
+  const move = ({ keyCode }) => {
+    //changes termino position based on keycodes
+    if (!gameOver) {
+      if (keyCode === 37) {
+        movePlayer(-1);
+      } else if (keyCode === 39) {
+        movePlayer(1);
+      } else if (keyCode === 40) {
+        dropPlayer();
+      }
     }
   }
+  
 
   // if the game is over will display
   return (
@@ -65,7 +70,7 @@ const Tetris = () => {
           <Display text="Level" />
         </div>
         )}
-        <StartButton />
+        <StartButton onClick={startGame} />
       </aside>
       </StyledTetris>
       </StyledTetrisWrapper>
