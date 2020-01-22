@@ -9,5 +9,14 @@ export const usePlayer = () => {
 		tetromino: randomTetromino().shape,
 		collided: false,
 	});
+
+	const updatePlayerPos = ({ x, y, collided }) => {
+		setPlayer(prev => ({
+			...prev,
+			pos: { x: (prev.pos.x += x), y: (prev.pos.x += y)},
+			collided,
+		}))
+	}
+
 	return [player];
 }
