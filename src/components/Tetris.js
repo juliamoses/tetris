@@ -34,6 +34,7 @@ const Tetris = () => {
   }
 
   const drop = () => {
+    //updates player position
     updatePlayerPos({ x:0, y:1, collided: false })
   }
 
